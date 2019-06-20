@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "face-chat",
-    "slug": "face-chat.com",
+    "slug": "face-chat",
     "privacy": "public",
     "sdkVersion": "33.0.0",
     "platforms": [

@@ -1,14 +1,11 @@
 import React from 'react';
 import { Platform } from 'react-native';
-import {
-  createStackNavigator,
-  createBottomTabNavigator,
-} from 'react-navigation';
-
+import { createBottomTabNavigator, createStackNavigator } from 'react-navigation';
 import TabBarIcon from '../components/TabBarIcon';
 import HomeScreen from '../screens/HomeScreen';
-import LinksScreen from '../screens/LinksScreen';
-import SettingsScreen from '../screens/SettingsScreen';
+import TextMessageScreen from '../screens/TextMessageScreen';
+import VideoCallScreen from '../screens/VideoCallScreen';
+
 
 const HomeStack = createStackNavigator({
   Home: HomeScreen,
@@ -21,43 +18,43 @@ HomeStack.navigationOptions = {
       focused={focused}
       name={
         Platform.OS === 'ios'
-          ? `ios-information-circle${focused ? '' : '-outline'}`
-          : 'md-information-circle'
+          ? 'ios-home'
+          : 'md-home'
       }
     />
   ),
 };
 
-const LinksStack = createStackNavigator({
-  Links: LinksScreen,
+const VideoCallStack = createStackNavigator({
+  VideoCall: VideoCallScreen,
 });
 
-LinksStack.navigationOptions = {
-  tabBarLabel: 'Links',
+VideoCallStack.navigationOptions = {
+  tabBarLabel: 'Video Call',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-link' : 'md-link'}
+      name={Platform.OS === 'ios' ? 'ios-videocam' : 'md-videocam'}
     />
   ),
 };
 
-const SettingsStack = createStackNavigator({
-  Settings: SettingsScreen,
+const TextMessageStack = createStackNavigator({
+  TextMessage: TextMessageScreen,
 });
 
-SettingsStack.navigationOptions = {
-  tabBarLabel: 'Settings',
+TextMessageStack.navigationOptions = {
+  tabBarLabel: 'Text Message',
   tabBarIcon: ({ focused }) => (
     <TabBarIcon
       focused={focused}
-      name={Platform.OS === 'ios' ? 'ios-options' : 'md-options'}
+      name={Platform.OS === 'ios' ? 'ios-text' : 'md-text'}
     />
   ),
 };
 
 export default createBottomTabNavigator({
   HomeStack,
-  LinksStack,
-  SettingsStack,
+  VideoCallStack,
+  TextMessageStack,
 });
